@@ -10,6 +10,7 @@ import pandas as pd
 app = FastAPI()
 fake_reddit_api = FakeRedditAPI()
 
+
 @app.get("/subfeddit/{subfeddit_name}/comments")
 def get_recent_comments(
         subfeddit_name: str,
@@ -19,7 +20,7 @@ def get_recent_comments(
         page: Optional[int] = 0,
         limit: Optional[int] = Query(25)
     ):
-    
+   
     subfeddits_response = fake_reddit_api.get_subfeddits(limit=25)
     df = pd.DataFrame(subfeddits_response['subfeddits'])
     subfeddit = df[df['title'] == subfeddit_name]
@@ -41,7 +42,7 @@ def get_recent_comments(
     elif (start_date):
         # Convert date strings to datetime objects
         start_date_ts = datetime.strptime(start_date, "%Y-%m-%d").timestamp() if start_date else None
-        end_date_ts = datetime.strptime(end_date, "%Y-%m-%d").timestamp()+86400 if end_date else None # add 24h (86400s) so end_date is the end of the date
+        end_date_ts = datetime.strptime(end_date, "%Y-%m-%d").timestamp() + 86400 if end_date else None  # add 24h (86400s) so end_date is the end of the date
 
         # # Filter by dates
         df = pd.DataFrame(comments)           
@@ -63,12 +64,13 @@ def get_recent_comments(
 
     # Then apply sorting on date-filtered results. Note that sorting happens AFTER date filter
     # So sorted results already are between date ranges and not the other way around.
-    if ((sort=="asc" or sort=="desc") and len(comments_with_polarity) > 0):
-        df=pd.DataFrame(comments_with_polarity)
+    if ((sort == "asc" or sort == "desc") and len(comments_with_polarity) > 0):
+        df = pd.DataFrame(comments_with_polarity)
         ascending = True if sort == "asc" else (False if sort == "desc" else None)
         comments_with_polarity = df.sort_values(by="polarity_score", ascending=ascending).to_dict('records')
 
     return comments_with_polarity
+
 
 if __name__ == "__main__":
     import uvicorn

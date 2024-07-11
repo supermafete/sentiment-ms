@@ -23,7 +23,7 @@ class FakeRedditAPI:
         response = self.session.get(url, params=params)
         response.raise_for_status()
         return response.json()
-    
+
     def get_subfeddit_info(self, subfeddit_id):
         url = f"{self.BASE_URL}/subfeddit"
         params = {"subfeddit_id": subfeddit_id}
@@ -39,6 +39,3 @@ class FakeRedditAPI:
         response = self.session.get(url, params=params)
         response.raise_for_status()
         return response.json()
-
-    
-    
