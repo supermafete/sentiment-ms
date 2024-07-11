@@ -16,6 +16,8 @@ Your microservices (PostgreSQL and Feddit API) **are already running apart**.
 ```
   $ pip install -r requirements.txt
   $ python app/main.py
+
+  http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
 ```
 
 ## Microservices
@@ -25,6 +27,8 @@ SentimentMS is attached to your docker containers
 ```
   $ docker-compose build
   $ docker-compose up
+  
+  http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
 ```
 
 ## URL parameters
