@@ -61,6 +61,7 @@ SentimentMS is attached to your docker containers
   
 - Note that if we use sort and date filters at the same time, sorting is applied on date-filtered results and not the other way around. It means that first we get the comments between the dates and then we sort the results. Maybe we could sort the results first and then filter by date, but that's is a less efficient approach because we have to fetch all records firts (as the API doesn't support date filtering). As the desired behaviour is not specified, I've choosen to filter the dates before sorting. Another time, it could be fixed accessing directly to the database.
 - I've used TextBlob.sentiment to simulate results from an actual ML model
+- All tests asserts True due we have to run the FedditAPI in a preproduction environment to run them
 
 
 # Improvements

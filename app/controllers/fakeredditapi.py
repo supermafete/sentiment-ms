@@ -34,7 +34,7 @@ class FakeRedditAPI:
     def get_comments(self, subfeddit_id, skip=0, limit=25, page=0):
         url = f"{self.BASE_URL}/comments"
         if (skip == 0) and (page > 0):
-            skip = limit * (page-1)
+            skip = limit * (page - 1)
         params = {"subfeddit_id": subfeddit_id, "skip": skip, "limit": limit}
         response = self.session.get(url, params=params)
         response.raise_for_status()
