@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+requests
+textblob
+python-dotenv
+pandas

@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  db:
+    image: postgres:15
+    platform: linux/amd64
+    environment:
+      POSTGRES_PASSWORD: "mysecretpassword"
+    ports:
+      - "5432:5432"
+
+  feddit:
+    image: chasingcars/feddit:latest
+    platform: linux/amd64
+    entrypoint: >
+      sh -c "sleep 10 && python main.py"
+    environment:
+      SQLALCHEMY_DATABASE_URI: "postgresql://postgres:mysecretpassword@db:5432/postgres"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  
+  sentiment-ms:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      FEDDIT_SERVICE_URL: "http://feddit:8080"  # Agrega la URL del servicio feddit
+    depends_on:
+      - feddit
