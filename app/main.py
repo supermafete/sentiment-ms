@@ -6,6 +6,10 @@ from datetime import datetime
 from controllers.fakeredditapi import FakeRedditAPI
 from textblob import TextBlob
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = FastAPI()
 fake_reddit_api = FakeRedditAPI()
@@ -74,4 +78,4 @@ def get_recent_comments(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8081)
+    uvicorn.run(app, host=os.getenv("BIND_HOST"), port=8081)
