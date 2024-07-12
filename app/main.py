@@ -63,7 +63,7 @@ def get_recent_comments(
             "text": text,
             "polarity_score": polarity,
             "created_at": datetime.fromtimestamp(comment["created_at"]).strftime('%Y-%m-%d %H:%M:%S'),
-            "classification": "Positive" if polarity > 0.0 else "Negative"
+            "classification": "Positive" if polarity >= 0.0 else "Negative"
         })
 
     # Then apply sorting on date-filtered results. Note that sorting happens AFTER date filter
