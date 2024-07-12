@@ -54,6 +54,10 @@ SentimentMS is attached to your docker containers
   * Returns pages of results depending on limit
   * Possible values: Integer
 
+```
+Example:
+http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments?sort=desc&start_date=2024-01-01&end_date=2024-07-12
+```
 
 # Considerations
 
