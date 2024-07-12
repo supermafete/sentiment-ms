@@ -4,7 +4,6 @@
   - [URL parameters](#url-parameters)
 - [Considerations](#considerations)
 - [Improvements](#improvements)
-- [TODO](#todo)
 
 
 # How to run
@@ -17,7 +16,9 @@ Your microservices (PostgreSQL and Feddit API) **are already running apart**.
   $ pip install -r requirements.txt
   $ python app/main.py
 
-  http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
+  http://0.0.0.0:8081/subfeddit/[Topic name]/comments
+
+  Example: http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
 ```
 
 ## Microservices
@@ -28,7 +29,9 @@ SentimentMS is attached to your docker containers
   $ docker-compose build
   $ docker-compose up
   
-  http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
+  http://0.0.0.0:8081/subfeddit/[Topic name]/comments
+
+  Example: http://0.0.0.0:8081/subfeddit/Dummy%20Topic%201/comments
 ```
 
 ## URL parameters
@@ -73,6 +76,3 @@ SentimentMS is attached to your docker containers
 **How I would improve this?** 
   As the challenge asks for handling date filtering, sorting and pagination, I would extend the Feddit API to add these parameters to the endpoints. I would implement the necessary queries to the database in order to fit with the requirements, but I thought that it's not the goal of this challenge, as indicated in the documentation. In any case, it would be easy to implement.
 
-# TODO
-
-* envs
